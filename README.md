@@ -29,8 +29,9 @@ npm run dev
 
 The homepage uses the supplied October CV destinations for email, hamid.com,
 GitHub, PERSAHOLIC and Parachute. Existing LinkedIn, Instagram and Spotify
-profiles are retained from the supplied website. EchoBank and Stalled London
-have no supplied project destinations, so they do not render outbound links.
+profiles are retained from the supplied website. EchoBank links to the user-supplied
+https://echobankapp.app. Stalled London has no supplied project destination, so
+it does not render an outbound link.
 Text links are underlined at rest and have visible keyboard focus.
 
 Blue identifies navigation and headings; plum and teal distinguish projects

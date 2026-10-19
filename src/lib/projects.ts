@@ -31,11 +31,11 @@ export const projects: Project[] = [
   {
     name: "EchoBank",
     tag: "Voice-first banking",
-    href: "",
+    href: "https://echobankapp.app",
     summary: "Voice-first banking for visually impaired users, built at a Generating Genius hackathon.",
     details: [
       "Built in September 2026 with React 19, TypeScript, TanStack Start and PostgreSQL; speech recognition and synthesis enable banking by voice.",
-      "Placed second — Nika has placed second in all three hackathons she has entered.",
+      "Implemented authentication, row-level security, AI card reading and scam-risk detection, with audio navigation and hold-to-confirm payments.",
     ],
   },
   {
