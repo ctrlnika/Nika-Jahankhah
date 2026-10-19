@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>Connect Spotify — Nika</title>
+<style>
+:root{color-scheme:light;--ink:#26334d;--blue:#315490;--paper:#f9f7f2;--line:#d9dce2}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,sans-serif}main{max-width:42rem;padding:2rem 1.5rem;margin:2rem auto}h1{font:clamp(2.25rem,7vw,3.5rem)/1.1 Georgia,serif;color:var(--blue);margin:1.5rem 0}h2{font-size:1.25rem;margin:1.5rem 0 .75rem}a{color:var(--blue);text-underline-offset:.2em}p{margin:.75rem 0}ol{padding-left:1.25rem}li{padding:.35rem 0}label{display:block;font-weight:600;margin-top:1.25rem}input,textarea{display:block;width:100%;padding:.85rem;margin:.5rem 0 1rem;border:1px solid var(--line);background:white;color:var(--ink);font:inherit;border-radius:0}textarea{font-family:monospace;font-size:.85rem;resize:vertical;min-height:8rem}button{min-height:48px;padding:.75rem 1rem;font:inherit;border:1px solid var(--blue);background:#e9edf5;color:var(--blue);cursor:pointer}button:disabled{opacity:.65;cursor:wait}:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.panel{padding:1.25rem;border:1px solid var(--line);margin:1.5rem 0}.hint{font-size:.875rem}#status{margin-top:1.25rem}code{overflow-wrap:anywhere}#redirect-uri{font-size:.85rem} [hidden]{display:none!important}
+</style>
+<script type="module" src="/spotify-connect.js"></script>
+</head>
+<body><main>
+<a href="/">← Back to your portfolio</a>
+<h1>Connect your Spotify</h1>
+<p>Approve your account in Spotify. No Python or Client Secret needed for this browser setup.</p>
+<section id="setup-panel" class="panel" aria-labelledby="setup-heading">
+<h2 id="setup-heading">One-time app settings</h2>
+<ol><li>Open your app in the <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noreferrer">Spotify Developer Dashboard</a>.</li><li>In Settings, add this exact Redirect URI and save:</li></ol>
+<label for="redirect-uri">Redirect URI</label><input id="redirect-uri" readonly><button id="copy-redirect" type="button">Copy Redirect URI</button>
+<p class="hint">Use your own Spotify account. Follow any development-mode account requirements shown in Spotify’s dashboard.</p>
+<form id="spotify-start"><label for="client-id">Client ID</label><input id="client-id" name="client-id" required autocomplete="off" spellcheck="false" maxlength="128" placeholder="Copy Client ID from your Spotify app"><p class="hint">This is the public Client ID, not the Client Secret.</p><button type="submit" id="connect-button">Continue to Spotify →</button></form>
+</section>
+<p id="status" role="status" aria-live="polite"></p>
+<section id="result-panel" class="panel" aria-labelledby="result-heading" hidden>
+<h2 id="result-heading">Spotify approved</h2>
+<p>Copy these values into the full website’s server secrets. Keep the refresh token private; don’t paste it into chat.</p>
+<label for="result-client">SPOTIFY_CLIENT_ID</label><input id="result-client" readonly spellcheck="false">
+<label for="refresh-token">SPOTIFY_REFRESH_TOKEN</label><textarea id="refresh-token" readonly spellcheck="false" rows="5"></textarea><button id="copy-token" type="button">Copy Refresh Token</button>
+<p class="hint">This token is shown only on this page and isn’t saved. The updated server supports this setup without a Client Secret. Redeploy the full app with these two secrets to show live listening; the design preview remains static.</p>
+</section>
+<p id="retry" hidden><a href="/spotify-connect.html">Start again</a></p>
+</main></body></html>

@@ -46,6 +46,19 @@ continues to omit the phone number from the uploaded private source.
 
 ## Connect your Spotify account
 
+Preferred browser setup: open `/spotify-connect.html` on the private design
+preview. Add the Redirect URI shown there to your Spotify app settings, enter
+your public Client ID, and press Continue to Spotify. Approval returns to that
+same tab, where the page exchanges the authorization code with S256 PKCE and
+shows a refresh token. No Client Secret is required for this flow. It sends no
+credentials to the portfolio server. The updated now-playing server supports
+`SPOTIFY_CLIENT_ID` plus `SPOTIFY_REFRESH_TOKEN` without a secret; existing
+three-secret setups remain supported. The login session expires after ten
+minutes and tokens are not persisted by the setup page.
+
+The Python flow below remains an alternative for use on your own computer.
+
+
 The private design preview is static: it displays a Spotify profile link. Live
 now-playing requires deploying the full TanStack app with its server functions.
 

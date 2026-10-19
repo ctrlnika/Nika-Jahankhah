@@ -15,14 +15,14 @@ async function getAccessToken() {
   const id = process.env["SPOTIFY_CLIENT_ID"];
   const secret = process.env["SPOTIFY_CLIENT_SECRET"];
   const refresh = process.env["SPOTIFY_REFRESH_TOKEN"];
-  if (!id || !secret || !refresh) return null;
+  if (!id || !refresh) return null;
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
-      Authorization: `Basic ${btoa(`${id}:${secret}`)}`,
+      ...(secret ? { Authorization: `Basic ${btoa(`${id}:${secret}`)}` } : {}),
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token: refresh }),
+    body: new URLSearchParams({ grant_type: "refresh_token", refresh_token: refresh, ...(!secret ? { client_id: id } : {}) }),
   });
   if (!res.ok) {
     console.error(`Spotify token failed [${res.status}]: ${await res.text()}`);
