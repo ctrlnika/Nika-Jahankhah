@@ -1,4 +1,4 @@
-# Nika's bio
+# Nika Jahankhah — hamid.com
 
 Portfolio website for hamid.com
 
@@ -25,25 +25,35 @@ npm i
 npm run dev
 ```
 
-## October 2026 visual update
+## Editorial art direction
 
-The homepage uses the supplied October CV destinations for email, hamid.com,
-GitHub, PERSAHOLIC and Parachute. Existing LinkedIn, Instagram and Spotify
-profiles are retained from the supplied website. EchoBank links to the user-supplied
-https://echobankapp.app. Stalled London has no supplied project destination, so
-it does not render an outbound link.
-Text links are underlined at rest and have visible keyboard focus.
+The portfolio uses self-hosted Hanken Grotesk, soft white and near-black, with
+ultramarine type and small vermilion annotations. The original flash portrait
+and real website screenshots provide the photographic warmth. PERSAHOLIC is
+the main feature; EchoBank and Parachute form an offset supporting pair; Stalled
+London is a compact index entry. Interface previews retain their own identity.
 
-Blue identifies navigation and headings; plum and teal distinguish projects
-and the Spotify panel. The portrait uses its intrinsic aspect ratio and the
-hero stacks below 640px. Projects use four columns on desktop and compact rows
-on phones. Spotify and Download CV share a consistent action column.
+The shared edge-light treatment is limited to image frames, the listening
+panel and contact action. Image movement, link arrows and the navigation
+indicator support keyboard focus and reduced motion. Content and native
+project disclosures remain available without hover or JavaScript.
 
-Spotify's existing server integration requires SPOTIFY_CLIENT_ID,
-SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN in the hosting environment.
-Without credentials it links to the existing profile. Never put these secrets
-in client code. The public CV is regenerated with scripts/cv/generate.py and
-continues to omit the phone number from the uploaded private source.
+The October CV and existing contact destinations remain the content sources.
+EchoBank uses https://echobankapp.app. Stalled London has no supplied public
+URL, so it does not render an invented destination. Public font licenses are
+included alongside the files in `public/fonts`.
+
+Run `npm run build` and `npm test` to validate the full TanStack application.
+The source retains its server-side Spotify and project Q&A integrations. The
+owner-private design preview is a static export made with
+`python scripts/preview/export.py` after building, while the current dev server
+runs on port 5173. It preserves navigation, disclosures, downloads, embeds and
+the email-draft form; it does not simulate server-only Q&A or live listening.
+The Spotify setup page is copied without modification during export.
+
+The downloadable CV is regenerated with `python scripts/cv/generate.py` using
+the palette tokens in `src/styles.css`. It continues to omit the private phone
+number. Its privacy check is `python src/test/cv_privacy_test.py`.
 
 ## Connect your Spotify account
 

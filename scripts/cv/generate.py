@@ -16,7 +16,10 @@ pdfmetrics.registerFontFamily("Body", normal="Body", bold="BodyBold", italic="Bo
 
 def token(name):
     css = (ROOT / "src/styles.css").read_text().split(".dark {")[0]
-    match = re.search(r"--" + name + r": oklch\(([^)]+)\)", css)
+    alias = re.search(r"--" + re.escape(name) + r":\s*var\(--([^)]+)\)", css)
+    if alias:
+        return token(alias.group(1))
+    match = re.search(r"--" + re.escape(name) + r":\s*oklch\(([^)]+)\)", css)
     if not match:
         raise ValueError(name)
     light, chroma, hue = map(float, match.group(1).split())

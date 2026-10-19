@@ -1,28 +1,44 @@
-import { HeritageDivider } from "@/components/HeritageDetail";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowUpRight, AudioLines, Map, Leaf, ShieldCheck, ChevronDown, Loader2, Send } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { projects } from "@/lib/projects";
+import { projects, type Project } from "@/lib/projects";
 import { askAboutProjects } from "@/lib/project-qa.functions";
-import persaholicShot from "@/assets/persaholic-preview.jpg.asset.json";
-import parachuteShot from "@/assets/parachute-preview.jpg.asset.json";
 
-const shots: Record<string, string> = {
-  Persaholic: persaholicShot.url,
-  Parachute: parachuteShot.url,
+const images: Record<string, string> = {
+  Persaholic: "/projects/persaholic.jpg",
+  EchoBank: "/projects/echobank.jpg",
+  Parachute: "/projects/parachute.jpg",
 };
 
-const projectMarks = {
-  Persaholic: Leaf,
-  "Stalled London": Map,
-  EchoBank: AudioLines,
-  Parachute: ShieldCheck,
-};
+function ProjectDetails({ project }: { project: Project }) {
+  return (
+    <div className="project-actions">
+      <details className="project-details">
+        <summary>Project details <ChevronDown size={14} aria-hidden="true" /></summary>
+        <div className="project-detail-body"><ul>{project.details.map(d => <li key={d}>{d}</li>)}</ul></div>
+      </details>
+      {project.href && <a className="text-link project-visit" href={project.href} target="_blank" rel="noreferrer" aria-label={`Visit ${project.name}`}>Visit site<ArrowUpRight size={15} aria-hidden="true" /></a>}
+    </div>
+  );
+}
 
-function ProjectMark({ name }: { name: string }) {
-  const Icon = projectMarks[name as keyof typeof projectMarks] ?? Map;
-  return <div className="project-mark" aria-hidden="true"><Icon /></div>;
+function ProjectComposition({ project, number, featured = false }: { project: Project; number: string; featured?: boolean }) {
+  return (
+    <li className={`project-composition ${featured ? "project-feature" : "project-support"}`}>
+      <a className="project-media edge-light" href={project.href} target="_blank" rel="noreferrer" aria-label={`Visit ${project.name}`}>
+        <img src={images[project.name]} alt={`Website preview of ${project.name}`} width={project.name === "EchoBank" ? 1440 : 1280} height={project.name === "EchoBank" ? 1050 : 800} loading="lazy" />
+        <span className="frame-visit" aria-hidden="true"><ArrowUpRight size={20} /></span>
+      </a>
+      <div className="project-caption">
+        <span className="project-number">{number}</span>
+        <div className="project-heading"><h3><a href={project.href} target="_blank" rel="noreferrer">{project.name === "Persaholic" ? "PERSAHOLIC" : project.name}</a></h3><p className="project-category">{project.tag}</p></div>
+        <p className="project-summary">{project.summary}</p>
+      </div>
+      <ProjectDetails project={project} />
+      {featured && <p className="project-footnote"><span className="footnote-marker" aria-hidden="true" />7.8% waitlist conversion in the first 48 hours.</p>}
+    </li>
+  );
 }
 
 export function ProjectsSection() {
@@ -48,37 +64,22 @@ export function ProjectsSection() {
     }
   }
 
+  const featured = projects.find(p => p.name === "Persaholic")!;
+  const echo = projects.find(p => p.name === "EchoBank")!;
+  const parachute = projects.find(p => p.name === "Parachute")!;
+  const city = projects.find(p => p.name === "Stalled London")!;
   return (
-    <section id="projects" className="projects-section mt-16">
-      <HeritageDivider />
-      <h2 className="section-heading mb-6">Projects</h2>
-      <ul className="project-grid">
-        {projects.map((p) => (
-          <li key={p.name} className="project-card group">
-            <div className="project-heading">
-              <ProjectMark name={p.name} />
-              <div className="project-heading-copy">
-                <h3 className="font-serif text-2xl leading-tight">{p.name}</h3>
-                <span className="project-category">{p.tag}</span>
-              </div>
-            </div>
-            <div className="project-copy">
-              <p className="project-summary text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
-              <div className="project-footer">
-                <details className="project-details group">
-                  <summary className="project-disclosure">Details <ChevronDown className="size-3 transition-transform group-open:rotate-180" /></summary>
-                  <div className="project-detail-body">
-                    <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-                      {p.details.map((d) => <li key={d}>{d}</li>)}
-                    </ul>
-                    {shots[p.name] && <img src={shots[p.name]} alt={`Screenshot of ${p.name}`} loading="lazy" className="project-detail-image" />}
-                  </div>
-                </details>
-                {p.href ? <a className="project-visit" href={p.href} target="_blank" rel="noreferrer" aria-label={`Visit ${p.name}`}>Visit site <ArrowUpRight className="size-4" aria-hidden="true" /></a> : <span className="project-availability">No public site</span>}
-              </div>
-            </div>
-          </li>
-        ))}
+    <section id="projects" className="page-section projects-section" aria-labelledby="projects-heading">
+      <div className="section-header"><h2 id="projects-heading">Selected work</h2><span className="eyebrow">01 — 04</span></div>
+      <ul className="project-editorial-grid">
+        <ProjectComposition project={featured} number="01" featured />
+        <ProjectComposition project={echo} number="02" />
+        <ProjectComposition project={parachute} number="03" />
+        <li className="project-index">
+          <span className="project-number">04</span>
+          <div className="project-heading"><h3>{city.name}</h3><p className="project-category">{city.tag}</p></div>
+          <div className="project-index-copy"><p className="project-summary">{city.summary}</p><ProjectDetails project={city} /></div>
+        </li>
       </ul>
 
       <div className="project-qa mt-8 border border-border p-5">
