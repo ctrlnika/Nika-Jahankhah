@@ -18,7 +18,7 @@ function Thumb({ name }: { name: string; href: string }) {
   const src = shots[name];
   return (
     <div className="flex h-full flex-col overflow-hidden border border-border bg-background">
-      <div className="relative flex-1 overflow-hidden">
+      <div className="relative h-full min-h-0 flex-1 overflow-hidden">
         {src ? (
           <img src={src} alt={`Screenshot of the ${name} website`} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
         ) : (
@@ -60,31 +60,31 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="border-t border-foreground pt-12 mt-20">
       <h2 className="mb-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Projects</h2>
-      <ul className="project-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="project-grid">
         {projects.map((p) => (
-          <li key={p.name} className="project-card group flex flex-col border border-border">
+          <li key={p.name} className="project-card group">
             {p.href ? (
-              <a href={p.href} target="_blank" rel="noreferrer" aria-label={`Visit ${p.name}`} className="block aspect-[16/9] border-b border-border bg-muted/30 p-3">
+              <a href={p.href} target="_blank" rel="noreferrer" aria-label={`Visit ${p.name}`} className="project-thumb">
                 <Thumb name={p.name} href={p.href} />
               </a>
             ) : (
-              <div className="aspect-[16/9] border-b border-border bg-muted/30 p-3">
+              <div className="project-thumb">
                 <Thumb name={p.name} href="" />
               </div>
             )}
-            <div className="flex flex-1 flex-col gap-2 p-4">
+            <div className="project-copy">
               <div className="flex items-start justify-between gap-3">
-                <h3 className="font-serif text-xl leading-tight">{p.href ? <a href={p.href} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
+                <h3 className="font-serif text-2xl leading-tight">{p.href ? <a href={p.href} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
                 {p.href && (
                   <a href={p.href} target="_blank" rel="noreferrer" aria-label={`Open ${p.name}`} className="text-muted-foreground hover:text-accent">
                     <ArrowUpRight className="size-5" />
                   </a>
                 )}
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{p.tag}</span>
+              <span className="project-category">{p.tag}</span>
               <p className="text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
               <details className="group mt-auto pt-2">
-                <summary className="flex cursor-pointer list-none items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-accent">
+                <summary className="project-disclosure">
                   Read more <ChevronDown className="size-3 transition-transform group-open:rotate-180" />
                 </summary>
                 <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">

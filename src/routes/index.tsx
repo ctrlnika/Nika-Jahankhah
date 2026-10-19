@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download } from "lucide-react";
+import { Download, ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { NowPlaying } from "@/components/NowPlaying";
 import { PhotoBooth } from "@/components/PhotoBooth";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -68,14 +68,20 @@ function Index() {
         </div>
         <div className="hero-photo"><PhotoBooth /></div>
         <div className="hero-actions">
-          <div className="hero-links">
-            {links.filter((l) => l.label !== "Spotify").map((l) => (
-              <a key={l.label} href={l.href} target={l.href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer">{l.label}</a>
-            ))}
+          <div className="social-panel">
+            <p className="social-heading">Find me elsewhere</p>
+            <a className="social-link social-featured" href="https://www.linkedin.com/in/nikahamid" target="_blank" rel="noreferrer">
+              <Linkedin aria-hidden="true" /><span><strong>Connect on LinkedIn</strong><small>Work, projects &amp; updates</small></span><ArrowUpRight aria-hidden="true" />
+            </a>
+            <div className="social-secondary">
+              <a className="social-link" href="https://github.com/ctrlnika" target="_blank" rel="noreferrer"><Github aria-hidden="true" /><span>Explore my code</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.instagram.com/nikaology/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /><span>Instagram</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="social-link" href="mailto:nika@hamid.com"><Mail aria-hidden="true" /><span>Send me an email</span><ArrowUpRight aria-hidden="true" /></a>
+            </div>
           </div>
           <div className="hero-utilities">
             <NowPlaying />
-            <Button asChild className="cv-download h-12 rounded-none shadow-none">
+            <Button asChild variant="link" className="cv-download h-12 shadow-none">
               <a href="/Nika-Jahankhah-CV.pdf" download="Nika-Jahankhah-CV.pdf"><Download /> Download CV</a>
             </Button>
           </div>
