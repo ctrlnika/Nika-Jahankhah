@@ -1,0 +1,14 @@
+# Portfolio update
+- [x] Add Nika's editorial photo booth beside her name with existing social links.
+- [x] Check the live Spotify widget: profile fallback works; live listening needs SPOTIFY_REFRESH_TOKEN.
+- [x] Replace portfolio details with the October 2026 CV, including education, experience, skills, certifications and activities.
+- [x] Add Stalled London and the House London #0 civic-tech context.
+- [x] Verify the updated portfolio and contact links.
+- [x] Create an editorial PDF CV with the phone number omitted.
+- [x] Add prominent matching CV download links and verify the download.
+- [x] Use “Tech, Tea & Biscuits” on the portfolio and CV.
+- [ ] Publish the portfolio so it is ready once Squarespace DNS records are configured. (Publish requested — awaiting deploy.)
+- [x] Use the display name “Nika Jahankhah” across the portfolio, photo strip and CV.
+- [x] Swap the photo strip's Spotify link for Instagram (instagram.com/nikaology).
+- [x] Put the name and photo strip side by side on mobile, with the CV button and Spotify card filling that column and the intro full width below.
+- [ ] Connect hamid.com (Squarespace) — user adds DNS records at Squarespace; connect flow not shown in this client, use Project Settings → Domains.
