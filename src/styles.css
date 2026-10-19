@@ -185,15 +185,12 @@ h2 { color: var(--primary) !important; }
 /* Shared geometry keeps project and social content easy to scan. */
 .social-panel { border: 1px solid var(--border); background: var(--card); padding: 1.25rem; }
 .social-heading { color: var(--muted-foreground); font-size: .8rem; margin-bottom: 1rem; }
-.social-link { display: flex; gap: .75rem; align-items: center; min-height: 3.25rem; color: var(--primary); padding: .75rem 0; }
+.social-list { display: grid; gap: .5rem; }
+.social-link { display: flex; gap: .75rem; align-items: center; min-height: 3.25rem; color: var(--primary); padding: .75rem; border: 1px solid var(--border); background: transparent; font-size: .95rem; font-weight: 500; transition: background-color .15s, border-color .15s; }
 .social-link > svg { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
 .social-link > svg:last-child { margin-left: auto; width: 1rem; }
 .social-link span { min-width: 0; }
-.social-link strong { font-weight: 600; }
-.social-link small { display: block; margin-top: .25rem; color: var(--muted-foreground); font-size: .8rem; }
-.social-featured { background: var(--blue-wash); margin: 0 -.5rem .5rem; padding: 1rem .5rem; }
-.social-secondary .social-link + .social-link { border-top: 1px solid var(--border); }
-.social-link:hover { color: var(--accent); }
+.social-link:hover { color: var(--accent); background: var(--plum-wash); border-color: var(--accent); }
 .cv-download { background: transparent !important; color: var(--primary) !important; padding-inline: 0; border: 0; font-weight: 500; }
 .cv-download:hover { color: var(--accent) !important; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
@@ -220,8 +217,9 @@ h2 { color: var(--primary) !important; }
   font-style: normal;
   font-display: swap;
 }
-.name-lockup { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem 1.5rem; }
-.persian-signature { font-family: "Noto Naskh Arabic", serif; font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 500; color: var(--accent); line-height: 1.6; letter-spacing: normal; }
+.name-lockup { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1.25rem 3rem; padding-block: .25rem; }
+.name-lockup > h1 { min-width: 0; max-width: 100%; }
+.persian-signature { font-family: "Noto Naskh Arabic", serif; font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 500; color: var(--accent); line-height: 1.7; letter-spacing: normal; padding: .15em .25em; max-width: 100%; }
 .portrait-frame { position: relative; }
 .portrait-ornament { position: absolute; top: -.65rem; right: -.65rem; width: clamp(4.5rem, 10vw, 7.5rem); aspect-ratio: 1; z-index: 1; background: var(--background); color: var(--teal); clip-path: polygon(0 0, 100% 0, 100% 100%); pointer-events: none; }
 .portrait-ornament svg { display: block; width: 100%; height: 100%; opacity: .75; }
@@ -230,4 +228,4 @@ h2 { color: var(--primary) !important; }
 .binary-detail { flex-shrink: 0; font-family: var(--font-mono); font-size: .625rem; letter-spacing: .18em; color: var(--primary); opacity: .65; white-space: nowrap; }
 .geometry-transition { font-size: 1rem; letter-spacing: .2em; color: var(--accent); }
 .divider-geometry { flex-shrink: 0; width: 10rem; height: 2.5rem; object-fit: cover; }
-@media (max-width: 639px) { .name-lockup { gap: .25rem 1rem; } .persian-signature { font-size: 2.25rem; } .binary-detail > span { display: none; } .divider-geometry { width: 6rem; } .heritage-divider { gap: .5rem; } }
+@media (max-width: 639px) { .name-lockup { gap: 1.25rem 2rem; } .persian-signature { font-size: 2.25rem; } .binary-detail > span { display: none; } .divider-geometry { width: 6rem; } .heritage-divider { gap: .5rem; } }

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { Download, FileText, ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { NowPlaying } from "@/components/NowPlaying";
 import { PhotoBooth } from "@/components/PhotoBooth";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -64,26 +64,23 @@ function Index() {
       <section className="hero-layout">
         <div className="hero-intro">
           <p className="mb-4 text-sm text-muted-foreground">London, UK</p>
-          <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl">Nika <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika in Persian">نیکا</span></div>
+          <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl">Nika <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika Jahankhah in Persian">نیکا جهانخواه</span></div>
         </div>
         <div className="hero-photo"><PhotoBooth /></div>
         <div className="hero-actions">
           <div className="social-panel">
-            <p className="social-heading">Find me elsewhere</p>
-            <a className="social-link social-featured" href="https://www.linkedin.com/in/nikahamid" target="_blank" rel="noreferrer">
-              <Linkedin aria-hidden="true" /><span><strong>Connect on LinkedIn</strong><small>Work, projects &amp; updates</small></span><ArrowUpRight aria-hidden="true" />
-            </a>
-            <div className="social-secondary">
-              <a className="social-link" href="https://github.com/ctrlnika" target="_blank" rel="noreferrer"><Github aria-hidden="true" /><span>Explore my code</span><ArrowUpRight aria-hidden="true" /></a>
+            <p className="social-heading">Socials</p>
+            <div className="social-list">
+              <a className="social-link" href="https://www.linkedin.com/in/nikahamid" target="_blank" rel="noreferrer"><Linkedin aria-hidden="true" /><span>LinkedIn</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="social-link" href="https://github.com/ctrlnika" target="_blank" rel="noreferrer"><Github aria-hidden="true" /><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
               <a className="social-link" href="https://www.instagram.com/nikaology/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /><span>Instagram</span><ArrowUpRight aria-hidden="true" /></a>
-              <a className="social-link" href="mailto:nika@hamid.com"><Mail aria-hidden="true" /><span>Send me an email</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="social-link" href="mailto:nika@hamid.com"><Mail aria-hidden="true" /><span>Email</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="social-link" href="/Nika-Jahankhah-CV.pdf" download="Nika-Jahankhah-CV.pdf"><FileText aria-hidden="true" /><span>Download CV</span><Download aria-hidden="true" /></a>
             </div>
           </div>
           <div className="hero-utilities">
             <NowPlaying />
-            <Button asChild variant="link" className="cv-download h-12 shadow-none">
-              <a href="/Nika-Jahankhah-CV.pdf" download="Nika-Jahankhah-CV.pdf"><Download /> Download CV</a>
-            </Button>
+
           </div>
         </div>
       </section>
