@@ -1,3 +1,4 @@
+import { HeritageDivider } from "@/components/HeritageDetail";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, ChevronDown, Loader2, Send } from "lucide-react";
@@ -58,7 +59,8 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="border-t border-foreground pt-12 mt-20">
+    <section id="projects" className="projects-section mt-16">
+      <HeritageDivider />
       <h2 className="mb-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Projects</h2>
       <ul className="project-grid">
         {projects.map((p) => (

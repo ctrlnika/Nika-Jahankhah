@@ -211,3 +211,23 @@ h2 { color: var(--primary) !important; }
 .linkedin-feature-heading > a { display: inline-flex; align-items: center; gap: .35rem; font-size: .85rem; color: var(--primary); }
 .linkedin-post { display: block; width: 100%; height: 620px; border: 1px solid var(--border); background: var(--card); }
 @media (max-width: 639px) { .linkedin-post { height: 560px; } }
+
+/* Persian typography and a small geometry motif, paired with binary for “Nika”. */
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url("/fonts/NotoNaskhArabic-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+.name-lockup { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.persian-signature { font-family: "Noto Naskh Arabic", serif; font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 500; color: var(--accent); line-height: 1.6; letter-spacing: normal; }
+.portrait-frame { position: relative; }
+.portrait-ornament { position: absolute; top: -.65rem; right: -.65rem; width: clamp(4.5rem, 10vw, 7.5rem); aspect-ratio: 1; z-index: 1; background: var(--background); color: var(--teal); clip-path: polygon(0 0, 100% 0, 100% 100%); pointer-events: none; }
+.portrait-ornament svg { display: block; width: 100%; height: 100%; opacity: .75; }
+.heritage-divider { display: flex; align-items: center; gap: .75rem; height: 2.5rem; margin-bottom: 1.75rem; overflow: hidden; color: var(--teal); user-select: none; }
+.heritage-rule { height: 1px; background: var(--border); flex: 1; min-width: 1rem; }
+.binary-detail { flex-shrink: 0; font-family: var(--font-mono); font-size: .625rem; letter-spacing: .18em; color: var(--primary); opacity: .65; white-space: nowrap; }
+.geometry-transition { font-size: 1rem; letter-spacing: .2em; color: var(--accent); }
+.divider-geometry { flex-shrink: 0; width: 10rem; height: 2.5rem; object-fit: cover; }
+@media (max-width: 639px) { .name-lockup { gap: .25rem 1rem; } .persian-signature { font-size: 2.25rem; } .binary-detail > span { display: none; } .divider-geometry { width: 6rem; } .heritage-divider { gap: .5rem; } }

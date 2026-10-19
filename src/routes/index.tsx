@@ -64,7 +64,7 @@ function Index() {
       <section className="hero-layout">
         <div className="hero-intro">
           <p className="mb-4 text-sm text-muted-foreground">London, UK</p>
-          <h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl">Nika <em>Jahankhah</em></h1>
+          <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl">Nika <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika in Persian">نیکا</span></div>
         </div>
         <div className="hero-photo"><PhotoBooth /></div>
         <div className="hero-actions">
