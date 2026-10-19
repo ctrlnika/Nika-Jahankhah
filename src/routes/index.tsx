@@ -48,7 +48,7 @@ const links = [
 
 function Index() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10 md:py-16">
+    <main className="portfolio-page mx-auto max-w-5xl px-6 py-10 md:py-16">
       <header className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-muted-foreground">
         <span className="hidden sm:inline">hamid.com</span>
         <nav className="flex items-center gap-4 sm:gap-5">
@@ -85,7 +85,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mt-16 border-t border-border pt-6">
+      <section className="record-section mt-14 border-t border-border pt-7">
         <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Education</h2>
         <div className="grid gap-4 md:grid-cols-[1fr_2fr] md:gap-12">
           <p className="font-mono text-sm text-muted-foreground">Sep 2025 – Jun 2028<br /><span className="text-xs">Expected graduation</span></p>
@@ -102,12 +102,12 @@ function Index() {
       </section>
 
 
-      <section id="experience" className="grid gap-10 pt-8 md:grid-cols-[2fr_1fr]">
+      <section id="experience" className="experience-section grid gap-10 pt-12 md:grid-cols-[2fr_1fr]">
         <div>
           <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
           <ul>
             {experience.map(([when, role, org, detail]) => (
-              <li key={role} className="grid grid-cols-[90px_1fr] gap-4 border-b border-border py-4">
+              <li key={role} className="experience-row grid grid-cols-[100px_1fr] gap-5 border-b border-border py-5">
                 <span className="font-mono text-xs text-muted-foreground">{when}</span>
                 <div>
                   <p className="font-serif text-xl">{role}</p>
@@ -142,7 +142,7 @@ function Index() {
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7514048395574104064" target="_blank" rel="noreferrer">Read on LinkedIn <ArrowUpRight aria-hidden="true" className="size-4" /></a>
         </div>
         <iframe
-          src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7514048392465993728"
+          src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7514048392465993728?collapsed=1"
           title="Nika's LinkedIn post about university status, social capital and platform design"
           loading="lazy"
           className="linkedin-post"
@@ -150,7 +150,7 @@ function Index() {
         />
       </section>
 
-      <section className="mt-16 border-t border-border pt-6">
+      <section className="record-section mt-14 border-t border-border pt-7">
         <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Community & activities</h2>
         <ul className="grid gap-8 md:grid-cols-3">
           <li><p className="font-mono text-xs text-muted-foreground">Jan – Aug 2024</p><h3 className="mt-2 font-serif text-2xl">Tech, Tea &amp; Biscuits</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Helped older residents with digital accessibility needs navigate online services.</p></li>
