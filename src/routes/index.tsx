@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/ContactForm";
 import { createFileRoute } from "@tanstack/react-router";
 import { Download, FileText, ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { NowPlaying } from "@/components/NowPlaying";
@@ -159,9 +160,7 @@ function Index() {
         </ul>
       </section>
 
-      <section id="contact" className="contact-band my-16 p-6 sm:p-10">
-        <a href="mailto:nika@hamid.com" className="font-serif text-3xl sm:text-5xl">nika@hamid.com</a>
-      </section>
+      <ContactForm />
 
       <footer className="border-t border-border pt-6 font-mono text-xs text-muted-foreground">
         © {new Date().getFullYear()} Nika Jahankhah

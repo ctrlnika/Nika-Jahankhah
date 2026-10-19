@@ -43,3 +43,29 @@ SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN in the hosting environment.
 Without credentials it links to the existing profile. Never put these secrets
 in client code. The public CV is regenerated with scripts/cv/generate.py and
 continues to omit the phone number from the uploaded private source.
+
+## Connect your Spotify account
+
+The private design preview is static: it displays a Spotify profile link. Live
+now-playing requires deploying the full TanStack app with its server functions.
+
+1. Open https://developer.spotify.com/dashboard and create or open your app.
+2. In the app settings, add exactly `http://127.0.0.1:8888/callback` as a Redirect URI.
+3. Copy its Client ID and reveal its Client Secret. Spotify development-mode
+   eligibility/account requirements are shown by the dashboard. If it requires
+   your account in User Management, add the account you will authorize.
+4. On your own computer, run `python3 scripts/spotify/connect.py`. Paste the ID
+   and secret into its prompts and approve the browser consent screen.
+5. Copy the resulting refresh token into `SPOTIFY_REFRESH_TOKEN` in your live
+   hosting's server secrets, together with `SPOTIFY_CLIENT_ID` and
+   `SPOTIFY_CLIENT_SECRET`. Redeploy the full app, play a track and wait up to
+   30 seconds for the card to refresh.
+
+The helper requests only currently-playing and recently-played scopes, binds
+only to the loopback interface, checks authorization state, suppresses callback
+logs and saves no credentials. Do not use the old public login/callback routes
+for this local flow. No separate private key is needed.
+
+The contact form currently composes an email to nika@hamid.com in the visitor's
+email app. It does not claim that a message was delivered. Direct website-to-
+inbox delivery needs an email provider and verified sender configured first.

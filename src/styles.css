@@ -218,7 +218,7 @@ h2 { color: var(--primary) !important; }
   font-display: swap;
 }
 .name-lockup { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 2.5rem; row-gap: 1.5rem; padding-block: .5rem; }
-.name-lockup > h1 { min-width: 0; max-width: 100%; font-size: clamp(3rem, 6vw, 5.25rem); line-height: 1.1; }
+.name-lockup > h1 { min-width: 0; max-width: 100%; font-size: clamp(3.5rem, 8.5vw, 7rem); line-height: .98; }
 .persian-signature { font-family: "Noto Naskh Arabic", serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; color: var(--accent); line-height: 1.7; letter-spacing: normal; padding: .2em .3em; max-width: 100%; justify-self: end; text-align: right; }
 .portrait-frame { position: relative; }
 .portrait-ornament { position: absolute; top: -.65rem; right: -.65rem; width: clamp(4.5rem, 10vw, 7.5rem); aspect-ratio: 1; z-index: 1; background: var(--background); color: var(--teal); clip-path: polygon(0 0, 100% 0, 100% 100%); pointer-events: none; }
@@ -257,3 +257,25 @@ h2 { color: var(--primary) !important; }
  .project-thumb { margin-left: .75rem; }
  .linkedin-feature-heading { align-items: start; }
 }
+
+/* Editorial name with a smaller right-aligned Persian subtitle. */
+.name-lockup { grid-template-columns: minmax(0, 1fr); row-gap: 1.5rem; }
+.name-lockup .persian-signature { justify-self: end; font-size: clamp(2rem, 3.5vw, 3rem); }
+.hero-intro .name-lockup h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: .98; overflow-wrap: normal; }
+.hero-photo .photo-booth img { aspect-ratio: 1280 / 848; object-fit: contain; }
+.contact-section { margin-block: 4rem; padding-block: 2rem; border-top: 1px solid var(--border); }
+.contact-intro { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
+.contact-intro a { color: var(--primary); }
+#contact-form { display: grid; gap: 1.25rem; max-width: 46rem; }
+.contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+#contact-form label { display: grid; gap: .5rem; color: var(--foreground); font-size: .9375rem; }
+#contact-form input, #contact-form textarea { width: 100%; min-width: 0; padding: .85rem 1rem; font: inherit; font-size: 1rem; line-height: 1.6; background: var(--card); border: 1px solid var(--border); border-radius: 0; color: var(--foreground); }
+#contact-form textarea { resize: vertical; min-height: 9rem; }
+#contact-form input:focus-visible, #contact-form textarea:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.contact-form-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.contact-form-footer p { max-width: 27rem; color: var(--muted-foreground); font-size: .875rem; }
+.contact-form-footer button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 3rem; padding: .75rem 1rem; border: 1px solid var(--border); background: var(--blue-wash); color: var(--primary); cursor: pointer; }
+.contact-form-footer button:hover { border-color: var(--primary); }
+#contact-status { color: var(--muted-foreground); font-size: .875rem; }
+#contact-status:empty { display: none; }
+@media (max-width: 639px) { .contact-fields { grid-template-columns: minmax(0, 1fr); } .hero-intro .name-lockup h1 { font-size: clamp(2.65rem, 10.5vw, 4.25rem); } }
