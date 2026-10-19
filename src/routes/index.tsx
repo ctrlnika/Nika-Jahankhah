@@ -136,6 +136,23 @@ function Index() {
 
       <ProjectsSection />
 
+      <section className="linkedin-feature" aria-labelledby="linkedin-heading">
+        <div className="linkedin-feature-heading">
+          <div>
+            <p className="social-heading">Writing &amp; ideas</p>
+            <h2 id="linkedin-heading" className="font-serif text-3xl">On LinkedIn</h2>
+          </div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7514048395574104064" target="_blank" rel="noreferrer">Read on LinkedIn <ArrowUpRight aria-hidden="true" className="size-4" /></a>
+        </div>
+        <iframe
+          src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7514048392465993728"
+          title="Nika's LinkedIn post about university status, social capital and platform design"
+          loading="lazy"
+          className="linkedin-post"
+          allowFullScreen
+        />
+      </section>
+
       <section className="mt-16 border-t border-border pt-6">
         <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Community & activities</h2>
         <ul className="grid gap-8 md:grid-cols-3">
