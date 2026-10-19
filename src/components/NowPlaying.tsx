@@ -47,27 +47,27 @@ export function NowPlaying() {
       href={data?.url ?? PROFILE}
       target="_blank"
       rel="noreferrer"
-      className="spotify-card edge-light"
+      className="spotify-card group flex min-w-0 items-center gap-3 border border-border p-3 transition-colors hover:border-primary"
     >
-      <div className="spotify-art">
+      <div className="relative size-14 shrink-0 overflow-hidden bg-muted">
         {data?.albumArt ? (
           <img src={data.albumArt} alt="" className="size-full object-cover" />
-        ) : <Music2 className="spotify-note" />}
+        ) : <Music2 className="m-4 size-6 text-muted-foreground" />}
       </div>
-      <div className="spotify-copy">
-        <p className="spotify-label">
+      <div className="min-w-0">
+        <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
           {data?.isPlaying && (
             <span className="relative flex size-2">
-
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-accent" />
             </span>
           )}
           {label}
         </p>
-        <p className="spotify-title">
+        <p className="line-clamp-2 font-serif text-lg leading-tight md:truncate">
           {data?.title ?? (data && !data.configured ? "My Spotify profile" : "—")}
         </p>
-        <p className="spotify-artist">{data?.artist ?? ""}</p>
+        <p className="line-clamp-1 text-sm text-muted-foreground md:truncate">{data?.artist ?? ""}</p>
       </div>
     </a>
   );
