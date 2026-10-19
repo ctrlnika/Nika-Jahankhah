@@ -1,7 +1,7 @@
 import { HeritageDivider } from "@/components/HeritageDetail";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowUpRight, AudioLines, Map, ChevronDown, Loader2, Send } from "lucide-react";
+import { ArrowUpRight, AudioLines, Map, Leaf, ShieldCheck, ChevronDown, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
 import { askAboutProjects } from "@/lib/project-qa.functions";
@@ -13,22 +13,16 @@ const shots: Record<string, string> = {
   Parachute: parachuteShot.url,
 };
 
-function Thumb({ name }: { name: string; href: string }) {
-  const src = shots[name];
-  return (
-    <div className="flex h-full flex-col overflow-hidden border border-border bg-background">
-      <div className="relative h-full min-h-0 flex-1 overflow-hidden">
-        {src ? (
-          <img src={src} alt={`Screenshot of the ${name} website`} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-        ) : (
-          <div className={`project-art ${name === "EchoBank" ? "project-art-voice" : "project-art-city"}`}>
-            {name === "EchoBank" ? <AudioLines aria-hidden="true" /> : <Map aria-hidden="true" />}
-            <span>{name === "EchoBank" ? "Voice-first banking" : "London · civic data"}</span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+const projectMarks = {
+  Persaholic: Leaf,
+  "Stalled London": Map,
+  EchoBank: AudioLines,
+  Parachute: ShieldCheck,
+};
+
+function ProjectMark({ name }: { name: string }) {
+  const Icon = projectMarks[name as keyof typeof projectMarks] ?? Map;
+  return <div className="project-mark" aria-hidden="true"><Icon /></div>;
 }
 
 export function ProjectsSection() {
@@ -62,26 +56,26 @@ export function ProjectsSection() {
         {projects.map((p) => (
           <li key={p.name} className="project-card group">
             <div className="project-heading">
-              {p.href ? (
-                <a href={p.href} target="_blank" rel="noreferrer" aria-label={`Visit ${p.name}`} className="project-thumb"><Thumb name={p.name} href={p.href} /></a>
-              ) : (
-                <div className="project-thumb"><Thumb name={p.name} href="" /></div>
-              )}
+              <ProjectMark name={p.name} />
               <div className="project-heading-copy">
-                <h3 className="font-serif text-2xl leading-tight">{p.href ? <a className="project-title-link" href={p.href} target="_blank" rel="noreferrer">{p.name}<ArrowUpRight className="size-4" aria-hidden="true" /></a> : p.name}</h3>
+                <h3 className="font-serif text-2xl leading-tight">{p.name}</h3>
                 <span className="project-category">{p.tag}</span>
               </div>
             </div>
             <div className="project-copy">
-              <p className="text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
-              <details className="group mt-auto pt-2">
-                <summary className="project-disclosure">
-                  Read more <ChevronDown className="size-3 transition-transform group-open:rotate-180" />
-                </summary>
-                <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                  {p.details.map((d) => <li key={d}>— {d}</li>)}
-                </ul>
-              </details>
+              <p className="project-summary text-sm leading-relaxed text-muted-foreground">{p.summary}</p>
+              <div className="project-footer">
+                <details className="project-details group">
+                  <summary className="project-disclosure">Details <ChevronDown className="size-3 transition-transform group-open:rotate-180" /></summary>
+                  <div className="project-detail-body">
+                    <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
+                      {p.details.map((d) => <li key={d}>{d}</li>)}
+                    </ul>
+                    {shots[p.name] && <img src={shots[p.name]} alt={`Screenshot of ${p.name}`} loading="lazy" className="project-detail-image" />}
+                  </div>
+                </details>
+                {p.href ? <a className="project-visit" href={p.href} target="_blank" rel="noreferrer" aria-label={`Visit ${p.name}`}>Visit site <ArrowUpRight className="size-4" aria-hidden="true" /></a> : <span className="project-availability">No public site</span>}
+              </div>
             </div>
           </li>
         ))}
