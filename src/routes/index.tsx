@@ -65,7 +65,7 @@ function Index() {
       <section className="hero-layout">
         <div className="hero-intro">
           <p className="mb-4 text-sm text-muted-foreground">London, UK</p>
-          <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl">Nika <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika Jahankhah in Persian">نیکا جهانخواه</span></div>
+          <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl"><span>Nika</span> <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika Jahankhah in Persian">نیکا جهانخواه</span></div>
         </div>
         <div className="hero-photo"><PhotoBooth /></div>
         <div className="hero-actions">
@@ -87,7 +87,7 @@ function Index() {
       </section>
 
       <section className="record-section mt-14 border-t border-border pt-7">
-        <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Education</h2>
+        <h2 className="section-heading mb-5">Education</h2>
         <div className="grid gap-4 md:grid-cols-[1fr_2fr] md:gap-12">
           <p className="font-mono text-sm text-muted-foreground">Sep 2025 – Jun 2028<br /><span className="text-xs">Expected graduation</span></p>
           <div>
@@ -105,7 +105,7 @@ function Index() {
 
       <section id="experience" className="experience-section grid gap-10 pt-12 md:grid-cols-[2fr_1fr]">
         <div>
-          <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
+          <h2 className="section-heading mb-4">Experience</h2>
           <ul>
             {experience.map(([when, role, org, detail]) => (
               <li key={role} className="experience-row grid grid-cols-[100px_1fr] gap-5 border-b border-border py-5">
@@ -120,13 +120,13 @@ function Index() {
           </ul>
         </div>
         <div>
-          <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">Toolkit</h2>
+          <h2 className="section-heading mb-4">Toolkit</h2>
           <div className="flex flex-wrap gap-2">
             {skills.map((k) => (
               <span key={k} className="border border-border px-3 py-1 text-sm">{k}</span>
             ))}
           </div>
-          <h2 className="mb-4 mt-8 font-mono text-xs uppercase tracking-widest text-muted-foreground">Certifications</h2>
+          <h3 className="certifications-heading mb-4 mt-8">Certifications</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">{certifications.map((c) => <li key={c}>{c}</li>)}</ul>
           <p className="mt-6 text-sm text-muted-foreground">English & Persian (native), Spanish (proficient). London, UK.</p>
         </div>
@@ -152,7 +152,7 @@ function Index() {
       </section>
 
       <section className="record-section mt-14 border-t border-border pt-7">
-        <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Community & activities</h2>
+        <h2 className="section-heading mb-5">Community & activities</h2>
         <ul className="grid gap-8 md:grid-cols-3">
           <li><p className="font-mono text-xs text-muted-foreground">Jan – Aug 2024</p><h3 className="mt-2 font-serif text-2xl">Tech, Tea &amp; Biscuits</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Helped older residents with digital accessibility needs navigate online services.</p></li>
           <li><p className="font-mono text-xs text-muted-foreground">Oct 2026 – Jun 2027</p><h3 className="mt-2 font-serif text-2xl">Data Science & AI Society</h3><p className="mt-2 text-sm text-muted-foreground">Outreach Ambassador</p></li>
