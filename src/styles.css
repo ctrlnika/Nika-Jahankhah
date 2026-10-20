@@ -359,3 +359,31 @@ h2 { color: var(--primary) !important; }
  .project-heading h3 { font-size: 1.4rem; }
  .project-copy { padding: .9rem 1rem .65rem; }
 }
+
+/* Balanced bilingual masthead; portrait and social rows share an upper edge. */
+.hero-intro .name-lockup {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 3rem;
+  align-items: center;
+}
+.name-lockup h1 > span, .name-lockup h1 > em { display: block; }
+.name-lockup .persian-signature {
+  font-size: clamp(4.5rem, 8.5vw, 7.5rem);
+  line-height: 1.08;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0;
+}
+.persian-signature > span { display: block; }
+.hero-photo { padding-top: 2.05rem; }
+@media (min-width: 640px) and (max-width: 1000px) {
+  .hero-intro .name-lockup h1 { font-size: clamp(3rem, 8.2vw, 5.5rem); }
+  .name-lockup .persian-signature { font-size: clamp(4rem, 9vw, 6rem); }
+  .hero-intro .name-lockup { column-gap: 2rem; }
+}
+@media (max-width: 639px) {
+  .hero-intro .name-lockup { grid-template-columns: 1fr; row-gap: 1.5rem; }
+  .name-lockup .persian-signature { font-size: clamp(3.75rem, 15vw, 5rem); line-height: 1.1; }
+  .hero-photo { width: 100%; padding-top: 0; }
+}
