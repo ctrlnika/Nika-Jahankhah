@@ -1,85 +1,47 @@
-# Nika's bio
+# Nika-Jahankhah
 
-Portfolio website for hamid.com
+Nika Jahankhah’s portfolio for **hamid.com**: bilingual English/Persian typography, photography, projects, experience, LinkedIn post previews, contact delivery and Spotify listening.
 
-This project was built with [Lovable](https://lovable.dev).
+Preview: https://nika-portfolio-design-preview.nika616621.chatgpt.site/
 
-**Live app**: https://hamid-showcases-world.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7bfecdc8-e93c-414e-a2fb-edb9d2c1886e).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Run locally
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm ci
 npm run dev
 ```
 
-## October 2026 visual update
+## Checks
 
-The homepage uses the supplied October CV destinations for email, hamid.com,
-GitHub, PERSAHOLIC and Parachute. Existing LinkedIn, Instagram and Spotify
-profiles are retained from the supplied website. EchoBank links to the user-supplied
-https://echobankapp.app. Stalled London has no supplied project destination, so
-it does not render an outbound link.
-Text links are underlined at rest and have visible keyboard focus.
+```sh
+npm run build
+npm test
+```
 
-Blue identifies navigation and headings; plum and teal distinguish projects
-and the Spotify panel. The portrait uses its intrinsic aspect ratio and the
-hero stacks below 640px. Projects use four columns on desktop and compact rows
-on phones. Spotify and Download CV share a consistent action column.
+## Contents
 
-Spotify's existing server integration requires SPOTIFY_CLIENT_ID,
-SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN in the hosting environment.
-Without credentials it links to the existing profile. Never put these secrets
-in client code. The public CV is regenerated with scripts/cv/generate.py and
-continues to omit the phone number from the uploaded private source.
+- `src/`: React, TypeScript and TanStack portfolio application.
+- `public/`: portrait, CV, fonts, LinkedIn imagery and browser scripts.
+- `worker/api.js`: server-side contact delivery and current/recent Spotify listening.
+- `dist/`: current deployable Worker and portfolio snapshot.
+- `design-preview/`: static preview snapshot.
+- `scripts/`: CV generation, Spotify setup and deployment packaging.
+- `BACKEND-SETUP.md`: Resend and Spotify activation instructions.
 
-## Connect your Spotify account
+## Configuration
 
-Preferred browser setup: open `/spotify-connect.html` on the private design
-preview. Add the Redirect URI shown there to your Spotify app settings, enter
-your public Client ID, and press Continue to Spotify. Approval returns to that
-same tab, where the page exchanges the authorization code with S256 PKCE and
-shows a refresh token. No Client Secret is required for this flow. It sends no
-credentials to the portfolio server. The updated now-playing server supports
-`SPOTIFY_CLIENT_ID` plus `SPOTIFY_REFRESH_TOKEN` without a secret; existing
-three-secret setups remain supported. The login session expires after ten
-minutes and tokens are not persisted by the setup page.
+Contact delivery needs secret `RESEND_API_KEY` and a verified `CONTACT_FROM` sender. Spotify needs `SPOTIFY_CLIENT_ID` and secret `SPOTIFY_REFRESH_TOKEN`; confidential authorization flows also need secret `SPOTIFY_CLIENT_SECRET`. These integrations require configuration before live delivery/listening can work.
 
-The Python flow below remains an alternative for use on your own computer.
+Keep credentials in hosting runtime secrets. Do not commit `.env` files or tokens.
 
+The `.openai/hosting.json` file identifies the existing Sites deployment. Keep it when maintaining that site; use a separate hosting configuration for a different destination. DNS connection for hamid.com remains dependent on the domain’s DNS records.
 
-The private design preview is static: it displays a Spotify profile link. Live
-now-playing requires deploying the full TanStack app with its server functions.
+## Publish to GitHub
 
-1. Open https://developer.spotify.com/dashboard and create or open your app.
-2. In the app settings, add exactly `http://127.0.0.1:8888/callback` as a Redirect URI.
-3. Copy its Client ID and reveal its Client Secret. Spotify development-mode
-   eligibility/account requirements are shown by the dashboard. If it requires
-   your account in User Management, add the account you will authorize.
-4. On your own computer, run `python3 scripts/spotify/connect.py`. Paste the ID
-   and secret into its prompts and approve the browser consent screen.
-5. Copy the resulting refresh token into `SPOTIFY_REFRESH_TOKEN` in your live
-   hosting's server secrets, together with `SPOTIFY_CLIENT_ID` and
-   `SPOTIFY_CLIENT_SECRET`. Redeploy the full app, play a track and wait up to
-   30 seconds for the card to refresh.
+Once GitHub CLI authentication is working, from this directory run:
 
-The helper requests only currently-playing and recently-played scopes, binds
-only to the loopback interface, checks authorization state, suppresses callback
-logs and saves no credentials. Do not use the old public login/callback routes
-for this local flow. No separate private key is needed.
+```sh
+gh repo create Nika-Jahankhah --private --source=. --remote=origin --push
+```
 
-The contact form currently composes an email to nika@hamid.com in the visitor's
-email app. It does not claim that a message was delivered. Direct website-to-
-inbox delivery needs an email provider and verified sender configured first.
+The repository includes the original Git history and the latest portfolio changes.

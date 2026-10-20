@@ -30,3 +30,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private runtime credentials and Python caches
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
