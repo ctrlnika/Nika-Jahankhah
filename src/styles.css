@@ -411,3 +411,25 @@ h2 { color: var(--primary) !important; }
 
 .portrait-location { position: absolute; bottom: -.55rem; right: 1rem; z-index: 2; padding: .1rem .55rem; background: var(--background); color: var(--primary); font-family: var(--font-mono); font-size: .7rem; line-height: 1.4; letter-spacing: .06em; }
 @media (min-width: 900px) { .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* A tighter reading rhythm, with personal details close to the opening. */
+.portfolio-page { padding-top: 2.25rem; }
+.hero-layout { padding-top: 2rem; padding-bottom: .5rem; row-gap: 1.1rem; }
+.personal-strip { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem 1.5rem; margin: 0; padding: .65rem 0; border-block: 1px solid var(--border); color: var(--muted-foreground); font-size: .8rem; }
+.personal-strip > span:first-child { color: var(--plum, #783b7e); font-family: var(--font-serif); font-size: 1.2rem; }
+.hero-photo, .hero-actions { grid-row: 3; }
+.portfolio-page .record-section { margin-top: 2rem; padding-top: 1.5rem; }
+.portfolio-page .experience-section { padding-top: 2rem; gap: 2rem; }
+.portfolio-page .experience-row { padding-block: 1rem; }
+.portfolio-page .projects-section { margin-top: 2.25rem; }
+.linkedin-feature { margin-block: 2.25rem; }
+.contact-section { margin-block: 2.25rem 1rem; padding-block: 1.5rem; }
+.contact-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.contact-form-footer button:disabled { opacity: .6; cursor: wait; }
+@media (max-width: 639px) {
+ .hero-photo, .hero-actions { grid-row: auto; }
+ .hero-layout { row-gap: 1.25rem; }
+ .personal-strip { gap: .5rem 1rem; }
+ .social-list > a:last-child { grid-column: auto; }
+ .portfolio-page .record-section { margin-top: 1.75rem; }
+}

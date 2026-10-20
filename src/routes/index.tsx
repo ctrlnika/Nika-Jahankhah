@@ -66,6 +66,7 @@ function Index() {
         <div className="hero-intro">
           <div className="name-lockup"><h1 className="font-serif text-6xl leading-none tracking-tight text-primary sm:text-7xl md:text-8xl"><span>Nika</span> <em>Jahankhah</em></h1><span className="persian-signature" lang="fa" dir="rtl" aria-label="Nika Jahankhah in Persian"><span>نیکا</span><span>جهانخواه</span></span></div>
         </div>
+        <p className="personal-strip"><span>Code, culture &amp; curiosity.</span><span>English &amp; فارسی</span><a href="https://persaholic.com" target="_blank" rel="noreferrer">Building Persaholic ↗</a></p>
         <div className="hero-photo"><PhotoBooth /></div>
         <div className="hero-actions">
           <div className="social-panel">
@@ -74,7 +75,6 @@ function Index() {
               <a className="social-link" href="https://www.linkedin.com/in/nikahamid" target="_blank" rel="noreferrer"><Linkedin aria-hidden="true" /><span>LinkedIn</span><ArrowUpRight aria-hidden="true" /></a>
               <a className="social-link" href="https://github.com/ctrlnika" target="_blank" rel="noreferrer"><Github aria-hidden="true" /><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
               <a className="social-link" href="https://www.instagram.com/nikaology/" target="_blank" rel="noreferrer"><Instagram aria-hidden="true" /><span>Instagram</span><ArrowUpRight aria-hidden="true" /></a>
-              <a className="social-link" href="mailto:nika@hamid.com"><Mail aria-hidden="true" /><span>Email</span><ArrowUpRight aria-hidden="true" /></a>
               <a className="social-link" href="/Nika-Jahankhah-CV.pdf" download="Nika-Jahankhah-CV.pdf"><FileText aria-hidden="true" /><span>Download CV</span><Download aria-hidden="true" /></a>
             </div>
           </div>

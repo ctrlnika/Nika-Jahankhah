@@ -1,0 +1,10 @@
+import { describe, it, expect } from 'vitest';
+import { api } from '../../worker/api.js';
+const request = (data, origin='https://portfolio.test') => new Request('https://portfolio.test/api/contact',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({name:'Reader',email:'reader@example.com',message:'Hello Nika',submissionId:'12345678-1234-1234-1234-123456789012',...data})});
+describe('contact delivery',()=>{
+ it('rejects cross-origin and invalid input',async()=>{expect((await api(request({},'https://other.test'),{})).status).toBe(403);expect((await api(request({email:'bad'}),{})).status).toBe(400)});
+ it('does not claim delivery without credentials',async()=>{expect((await api(request({}),{})).status).toBe(503)});
+ it('delivers only to Nika with reply-to and idempotency',async()=>{let sent;const response=await api(request({}),{RESEND_API_KEY:'fixture',CONTACT_FROM:'Portfolio <contact@hamid.com>'},async(url,options)=>{sent=options;return Response.json({id:'email'})});expect(response.status).toBe(200);expect(JSON.parse(sent.body).to).toEqual(['nika@hamid.com']);expect(JSON.parse(sent.body).reply_to).toBe('reader@example.com');expect(sent.headers['Idempotency-Key']).toBeTruthy()});
+ it('reports provider failure',async()=>{expect((await api(request({}),{RESEND_API_KEY:'fixture',CONTACT_FROM:'sender'},async()=>new Response('',{status:429}))).status).toBe(502)});
+});
+it('returns recent listening when nothing is currently playing',async()=>{let call=0;const response=await api(new Request('https://portfolio.test/api/spotify'),{SPOTIFY_CLIENT_ID:'id',SPOTIFY_REFRESH_TOKEN:'fixture'},async()=>{call++;return call===1?Response.json({access_token:'fixture'}):call===2?new Response(null,{status:204}):Response.json({items:[{played_at:'2026-10-20T00:00:00Z',track:{name:'Track',artists:[{name:'Artist'}],album:{images:[]},external_urls:{spotify:'https://open.spotify.com/track/example'}}}]})});expect(await response.json()).toMatchObject({configured:true,isPlaying:false,title:'Track',artist:'Artist'})});
