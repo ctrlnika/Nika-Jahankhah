@@ -139,15 +139,25 @@ function Index() {
             <p className="social-heading">Writing &amp; ideas</p>
             <h2 id="linkedin-heading" className="font-serif text-3xl">On LinkedIn</h2>
           </div>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7514048395574104064" target="_blank" rel="noreferrer">Read on LinkedIn <ArrowUpRight aria-hidden="true" className="size-4" /></a>
+          <a href="https://www.linkedin.com/in/nikahamid" target="_blank" rel="noreferrer">My profile <ArrowUpRight aria-hidden="true" className="size-4" /></a>
         </div>
-        <iframe
-          src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7514048392465993728?collapsed=1"
-          title="Nika's LinkedIn post about university status, social capital and platform design"
-          loading="lazy"
-          className="linkedin-post"
-          allowFullScreen
-        />
+        <div className="linkedin-grid">
+          {[
+            { href: "https://lnkd.in/p/eR7hv94s", title: "University, identity & online status", excerpt: "What happens when people respond to the most emotionally charged part of a sentence?", image: "/linkedin-post-1.jpg" },
+            { href: "https://lnkd.in/p/eGWUgcbz", title: "Innovation at Caius House", excerpt: "Reflections on meeting Tim Cook, app development and the future of technology.", image: "/linkedin-post-2.jpg" },
+            { href: "https://lnkd.in/p/e37UMPtx", title: "Software engineers are cooked.", excerpt: "Started coding before I could read. Now I’m speedrunning rejections.", image: "/linkedin-post-3.jpg" },
+          ].map((post) => (
+            <a key={post.href} className="linkedin-preview" href={post.href} target="_blank" rel="noreferrer" aria-label={`${post.title} — view post on LinkedIn (opens in a new tab)`}>
+              <div className="linkedin-preview-image">{post.href === "https://lnkd.in/p/eR7hv94s" ? <span className="linkedin-preview-quote">“How much of what we call university ‘quality’ is about education, and how much is about social status?”</span> : <img src={post.image} alt="" loading="lazy" width={600} height={400} />}</div>
+              <div className="linkedin-preview-copy">
+                <span className="linkedin-preview-author"><Linkedin aria-hidden="true" /> Nika Jahankhah</span>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+                <span className="linkedin-preview-link">View post <ArrowUpRight aria-hidden="true" /></span>
+              </div>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="record-section mt-14 border-t border-border pt-7">
