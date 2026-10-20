@@ -91,7 +91,7 @@ function Index() {
           <p className="font-mono text-sm text-muted-foreground">Sep 2025 – Jun 2028<br /><span className="text-xs">Expected graduation</span></p>
           <div>
             <h3 className="font-serif text-3xl">BSc (Hons) Computer Science</h3>
-            <p className="mt-2 text-muted-foreground">City St George's, University of London · London, UK</p>
+            <p className="mt-2 text-muted-foreground">City St George's, University of London</p>
             <dl className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
               {[["Geometric Algorithms", "83.3%"], ["Operating Systems", "79%"], ["Discrete Mathematics for Computing", "71.1%"], ["Programming in Java", "67.5%"]].map(([subject, result]) => (
                 <div key={subject} className="flex items-baseline justify-between gap-4 border-b border-border pb-3"><dt className="text-muted-foreground">{subject}</dt><dd className="shrink-0 font-mono">{result}</dd></div>
@@ -127,7 +127,7 @@ function Index() {
           </div>
           <h3 className="certifications-heading mb-4 mt-8">Certifications</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">{certifications.map((c) => <li key={c}>{c}</li>)}</ul>
-          <p className="mt-6 text-sm text-muted-foreground">English & Persian (native), Spanish (proficient). London, UK.</p>
+          <p className="mt-6 text-sm text-muted-foreground">English & Persian (native), Spanish (proficient).</p>
         </div>
       </section>
 

@@ -1,20 +1,17 @@
 import { HeritageDivider } from "@/components/HeritageDetail";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowUpRight, AudioLines, Map, Leaf, ShieldCheck, ChevronDown, Loader2, Send } from "lucide-react";
+import { ArrowUpRight, AudioLines, Map, ShieldCheck, ChevronDown, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
 import { askAboutProjects } from "@/lib/project-qa.functions";
-import persaholicShot from "@/assets/persaholic-preview.jpg.asset.json";
 import parachuteShot from "@/assets/parachute-preview.jpg.asset.json";
 
 const shots: Record<string, string> = {
-  Persaholic: persaholicShot.url,
   Parachute: parachuteShot.url,
 };
 
 const projectMarks = {
-  Persaholic: Leaf,
   "Stalled London": Map,
   EchoBank: AudioLines,
   Parachute: ShieldCheck,
@@ -85,7 +82,7 @@ export function ProjectsSection() {
         <h3 className="font-serif text-2xl">Ask about my projects</h3>
         <p className="mt-1 text-sm text-muted-foreground">Answers come only from the project details above.</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {["What is Parachute?", "How did Persaholic grow?", "Who is EchoBank for?"].map((s) => (
+          {["What is Parachute?", "What does Stalled London map?", "Who is EchoBank for?"].map((s) => (
             <button key={s} type="button" onClick={() => { setQ(s); submit(s); }} className="border border-border px-3 py-1 text-xs hover:bg-muted">
               {s}
             </button>
